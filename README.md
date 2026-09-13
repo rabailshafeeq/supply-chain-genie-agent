@@ -2,13 +2,13 @@
 
 A working prototype that lets a non-technical business user (e.g. a VP or
 operations lead) ask plain-English questions about supply chain sales,
-vendor cost, and tariff exposure — and get an accurate, data-grounded
-answer back — built on **Databricks Genie**, Unity Catalog, and a
+vendor cost, and tariff exposure, and get an accurate, data-grounded
+answer back, built on **Databricks Genie**, Unity Catalog, and a
 lakehouse-style bronze/gold data model.
 
 > **Note on the data:** this project uses demo/synthetic supply chain data
 > (fictional materials, vendors, and purchase orders) and placeholder
-> tariff rates. It's built to demonstrate the *pattern* — a real
+> tariff rates. It's built to demonstrate the *pattern* a real
 > deployment would plug in an actual tariff/customs data source in place
 > of `demo_tariff_rates`.
 
@@ -18,7 +18,7 @@ A supply chain team wanted to be able to ask questions like:
 
 > "Total Sales for material 231412 in the last month and tariff impact"
 
-... and get a real, trustworthy answer — without writing SQL, without
+... and get a real, trustworthy answer, without writing SQL, without
 opening a dashboard, and without a data analyst in the loop for every
 question. The catch: the two things being asked about (sales and tariff
 cost) lived in different shapes across the data, and there was no
@@ -26,14 +26,14 @@ tariff data source connected yet.
 
 ## What this project builds
 
-1. **A bronze → gold lakehouse layer in Unity Catalog** — raw SAP-style
+1. **A bronze → gold lakehouse layer in Unity Catalog** raw SAP-style
    source tables (`purchase_orders`, `material_master`, `vendor_master`,
    `price_history`, `logistics_shipments`) feeding curated gold outputs
    (`out_price_anomalies`, `out_vendor_cost_index`, `out_savings_summary`,
    and the view built here, `out_sales_tariff_summary`).
 2. **A demo tariff rate table** (`demo_tariff_rates`) and a pre-joined,
    pre-aggregated gold view (`out_sales_tariff_summary`) that combines
-   real purchase order data with tariff rates by vendor country — so the
+   real purchase order data with tariff rates by vendor country, so the
    downstream AI agent doesn't have to reconstruct multi-table joins on
    every question.
 3. **A Databricks Genie Agent** ("Supply Chain Tariff and Pricing
@@ -46,7 +46,7 @@ tariff data source connected yet.
 
 ## Why this is harder than "just add a chatbot"
 
-The interesting engineering problem here isn't the chat UI — Genie
+The interesting engineering problem here isn't the chat UI, Genie
 provides that. It's making sure the agent:
 
 - **never fabricates data it doesn't have.** When asked about "last
@@ -87,9 +87,9 @@ and country does it come from?"**
 
 ## Tech stack
 
-- **Databricks** (Azure) — Unity Catalog, SQL Warehouses (serverless),
+- **Databricks** (Azure), Unity Catalog, SQL Warehouses (serverless),
   Genie Agents
-- **SQL** — table/view definitions, data modeling (see [`/sql`](./sql))
+- **SQL** table/view definitions, data modeling (see [`/sql`](./sql))
 - Natural language configuration — see
   [`genie_instructions.md`](./genie_instructions.md) for the exact
   instructions given to the agent
