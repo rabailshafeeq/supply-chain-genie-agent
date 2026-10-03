@@ -1,5 +1,7 @@
 # Supply Chain Tariff & Pricing Analysis — Natural Language BI Agent
 
+**Skills demonstrated:** Databricks, Unity Catalog, Genie Agents, SQL, bronze/gold data modeling, and writing instructions for a natural-language BI agent.
+
 A working prototype that lets a non-technical business user (e.g. a VP or
 operations lead) ask plain-English questions about supply chain sales,
 vendor cost, and tariff exposure, and get an accurate, data-grounded
